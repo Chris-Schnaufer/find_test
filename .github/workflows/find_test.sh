@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TARGET_FOLDER="outputs"
-# Define some counts that we expect
+# Define some counts that we expect (the number of sub-folders plus the top folder)
 EXPECTED_NUM_FOLDERS=64
 EXPECTED_NUM_CANOPYCOVER_CSV=56
 # The same number of CSV files + original, un-clipped mask file
@@ -25,7 +25,7 @@ if [[ "${#FOLDER_LIST[@]}" == "${EXPECTED_NUM_FOLDERS}" ]]; then
   echo "Found expected number of folders: ${EXPECTED_NUM_FOLDERS}"
 else
   echo "Expected ${EXPECTED_NUM_FOLDERS} folders and found ${#FOLDER_LIST[@]}"
-  for i in $(seq 0 63)
+  for i in $(seq 0 (( ${#FOLDER_LIST[@]} - 1)))
   do
     echo "${i}: ${FOLDER_LIST[$i]}"
   done
