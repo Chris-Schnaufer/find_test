@@ -15,8 +15,8 @@ do
   touch "${TARGET_FOLDER}/${i}/orthomosaic_mask.tif"
 done
 
-ls -ld "${TARGET_FOLDER}"
-ls -ld "${TARGET_FOLDER}/1"
+ls -l "${TARGET_FOLDER}"
+ls -l "${TARGET_FOLDER}/1"
 
 
 # Get all the folders and check the count
