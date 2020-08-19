@@ -1,4 +1,4 @@
-name: Building Docker container
+name: Find
 on:
   push:
     branches:
@@ -14,7 +14,7 @@ on:
 jobs:
   build_docker:
     runs-on: ubuntu-latest
-    name: Build docker container
+    name: Find
     steps:
       - name: Fetch source code
         uses: actions/checkout@v2

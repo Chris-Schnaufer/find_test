@@ -1,3 +1,3 @@
 #!/bin/bash
 
-find "./" -d 1 -type d
+find "./" -maxdepth 1 -type d
