@@ -20,7 +20,7 @@ ls -ld "${TARGET_FOLDER}/1"
 
 
 # Get all the folders and check the count
-FOLDER_LIST=(`find "${TARGET_FOLDER}" -maxdepth 1 -type d`)
+FOLDER_LIST=(`find "${TARGET_FOLDER}/" -maxdepth 1 -type d`)
 if [[ "${#FOLDER_LIST[@]}" == "${EXPECTED_NUM_FOLDERS}" ]]; then
   echo "Found expected number of folders: ${EXPECTED_NUM_FOLDERS}"
 else
@@ -30,7 +30,7 @@ else
 fi
 
 # Check the expected number of output files
-EXPECTED_CSV=(`find "${TARGET_FOLDER}" -type f | grep 'canopycover\.csv'`)
+EXPECTED_CSV=(`find "${TARGET_FOLDER}/" -type f | grep 'canopycover\.csv'`)
 if [[ "${#EXPECTED_CSV[@]}" == "${EXPECTED_NUM_CANOPYCOVER_CSV}" ]]; then
   echo "Found expected number of canopycover.csv files: ${EXPECTED_NUM_CANOPYCOVER_CSV}"
 else
@@ -40,7 +40,7 @@ else
 fi
 
 # Check the expected number of image mask files
-EXPECTED_MASK=(`find "${TARGET_FOLDER}" -type f | grep 'orthomosaic_mask\.tif'`)
+EXPECTED_MASK=(`find "${TARGET_FOLDER}/" -type f | grep 'orthomosaic_mask\.tif'`)
 if [[ "${#EXPECTED_MASK[@]}" == "${EXPECTED_NUM_MASK_TIF}" ]]; then
   echo "Found expected number of orthomosaic_mask.tif files: ${EXPECTED_NUM_MASK_TIF}"
 else
