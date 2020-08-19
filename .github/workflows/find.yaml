@@ -27,3 +27,5 @@ jobs:
         run: chmod +x .github/workflows/find_test.sh
       - name: run find
         run: .github/workflows/find_test.sh
+      - name: check using counts
+        run: X=$(find . | grep 'orthomosaic_mask\.tif' | wc -l) && echo "|${X}|"
