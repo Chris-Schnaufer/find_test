@@ -25,8 +25,7 @@ if [[ "${#FOLDER_LIST[@]}" == "${EXPECTED_NUM_FOLDERS}" ]]; then
   echo "Found expected number of folders: ${EXPECTED_NUM_FOLDERS}"
 else
   echo "Expected ${EXPECTED_NUM_FOLDERS} folders and found ${#FOLDER_LIST[@]}"
-  COUNT=$(( ${#FOLDER_LIST[@]} - 1 ))
-  for i in $(seq 0 $COUNT)
+  for i in $(seq 0 $(( ${#FOLDER_LIST[@]} - 1 )))
   do
     echo "${i}: ${FOLDER_LIST[$i]}"
   done
