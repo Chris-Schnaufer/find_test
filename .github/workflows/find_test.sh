@@ -2,7 +2,7 @@
 
 TARGET_FOLDER="outputs"
 # Define some counts that we expect (the number of sub-folders plus the top folder)
-EXPECTED_NUM_FOLDERS=64
+EXPECTED_NUM_FOLDERS=65
 EXPECTED_NUM_CANOPYCOVER_CSV=56
 # The same number of CSV files + original, un-clipped mask file
 EXPECTED_NUM_MASK_TIF=$((EXPECTED_NUM_CANOPYCOVER_CSV + 1))
@@ -38,7 +38,10 @@ if [[ "${#EXPECTED_CSV[@]}" == "${EXPECTED_NUM_CANOPYCOVER_CSV}" ]]; then
   echo "Found expected number of canopycover.csv files: ${EXPECTED_NUM_CANOPYCOVER_CSV}"
 else
   echo "Expected ${EXPECTED_NUM_CANOPYCOVER_CSV} canopycover.csv files but found ${#EXPECTED_CSV[@]}"
-  echo "${EXPECTED_CSV}"
+  for i in $(seq 0 $(( ${#EXPECTED_CSV[@]} - 1 )))
+  do
+    echo "${i}: ${EXPECTED_CSV[$i]}"
+  done
   exit 20
 fi
 
@@ -48,7 +51,10 @@ if [[ "${#EXPECTED_MASK[@]}" == "${EXPECTED_NUM_MASK_TIF}" ]]; then
   echo "Found expected number of orthomosaic_mask.tif files: ${EXPECTED_NUM_MASK_TIF}"
 else
   echo "Expected ${EXPECTED_NUM_MASK_TIF} orthomosaic_mask.tif files but found ${#EXPECTED_MASK[@]}"
-  echo "${EXPECTED_MASK}"
+  for i in $(seq 0 $(( ${#EXPECTED_MASK[@]} - 1 )))
+  do
+    echo "${i}: ${EXPECTED_MASK[$i]}"
+  done
   exit 30
 fi
 
