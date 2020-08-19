@@ -19,10 +19,8 @@ jobs:
       - name: Fetch source code
         uses: actions/checkout@v2
         id: fetch-source
-      - name: permissions
-        run: chmod +x .github/workflows/find_test.sh
-      - name: run find
-        run: .github/workflows/find_test.sh
+      - name: man find
+        run: man find > find.txt
       - name: show folder
         run: ls -l
       - name: upload help
@@ -30,3 +28,7 @@ jobs:
         with:
           name: find_help
           path: find.txt
+      - name: permissions
+        run: chmod +x .github/workflows/find_test.sh
+      - name: run find
+        run: .github/workflows/find_test.sh
