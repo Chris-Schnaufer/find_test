@@ -28,4 +28,7 @@ jobs:
       - name: run find
         run: .github/workflows/find_test.sh
       - name: check using counts
-        run: X=$(find . | grep 'orthomosaic_mask\.tif' | wc -l) && echo "|${X}|"
+        run: |
+             X=$(find . | grep 'orthomosaic_mask\.tif' | wc -l) && echo "|${X}|"
+             echo $X
+             if [[ "$X" == "64" ]]; then echo "All found"; else echo "Missing"; exit 2; fi
