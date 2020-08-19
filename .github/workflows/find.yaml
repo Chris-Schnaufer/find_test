@@ -1,0 +1,26 @@
+name: Building Docker container
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - docker_build_workflow
+  pull_request:
+    branches:
+      - master
+      - develop
+    tags:
+      - v*
+jobs:
+  build_docker:
+    runs-on: ubuntu-latest
+    name: Build docker container
+    steps:
+      - name: Fetch source code
+        uses: actions/checkout@v2
+        id: fetch-source
+      - name: permissions
+        run: chmod +x .github/workflows/find_test.sh
+      - name: run find
+        run: .github/workflows/find_test.sh
+        
