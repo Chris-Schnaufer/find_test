@@ -41,7 +41,7 @@ jobs:
              echo $X
              if [[ "$X" == "64" ]]; then echo "All found"; else echo "Missing"; exit 2; fi
       - name: Dump matrix context
-        if: startsWith(${{ matrix.foo }}, "zoo") && endsWith(${{ matrix.foo }}, "zoo")
+        if: ${{ matrix.foo  == "zoo" }}
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
