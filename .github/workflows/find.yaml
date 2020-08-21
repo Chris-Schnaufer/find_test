@@ -18,6 +18,11 @@ jobs:
     strategy:
       matrix:
         apps: [pylint, pytest]
+        include:
+          - apps: pylint
+            foo: boo
+          - apps: pytest
+            foo: zoo
     steps:
       - name: Fetch source code
         uses: actions/checkout@v2
