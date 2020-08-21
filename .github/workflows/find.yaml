@@ -44,5 +44,4 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-        if: ${{ matrix.apps }} == "pylint"
-        
+        if: ${{ matrix.foo }} == "zoo"
