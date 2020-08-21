@@ -15,6 +15,9 @@ jobs:
   build_docker:
     runs-on: ubuntu-latest
     name: Find
+    strategy:
+      matrix:
+        apps: [pylint, pytest]
     steps:
       - name: Fetch source code
         uses: actions/checkout@v2
@@ -32,3 +35,7 @@ jobs:
              X=$(find . | grep 'orthomosaic_mask\.tif' | wc -l) && echo "|${X}|"
              echo $X
              if [[ "$X" == "64" ]]; then echo "All found"; else echo "Missing"; exit 2; fi
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
