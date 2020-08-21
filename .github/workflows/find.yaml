@@ -44,4 +44,4 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-        if: { ${{ matrix.foo }} == "zoo" }
+        if: startsWith(${{ matrix.foo }}, "zoo") && endsWith(${{ matrix.foo }}, "zoo")
